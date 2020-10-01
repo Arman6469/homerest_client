@@ -1,0 +1,98 @@
+@import '../../style/variables';
+
+.sub_menu {
+  width: 17%;
+  background-color: #eee;
+
+}
+
+.bg-gray {
+  background-color: #eee;
+  margin: 0 !important;
+  height: 3vw !important;
+  line-height: 3vw !important;
+
+}
+.font_sub_title {
+  font-size: 1.2vw;
+  text-transform: capitalize;
+
+}
+.font_sub_text {
+  padding: 0 !important;
+  font-size: 1.1vw;
+  padding-left: 5vw !important;
+  &:hover{
+    color: $red
+  }
+}
+
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+  background-color: #5d0c1d47;
+  color: $red;
+}
+
+.ant-menu-inline .ant-menu-item::after{
+  border-right:0.3vw solid $red;
+
+}
+.ant-menu-submenu-title{
+  padding: 0 !important;
+  padding-left: 1.2vw !important;
+  height: 3vw !important;
+  line-height: 2em !important;
+}
+.ant-menu-submenu-active{
+  color: $red !important;
+  &:hover{
+    color: $red !important;
+  }
+}
+.ant-menu-submenu-selected{
+  color: $red !important;
+  &:hover{
+    color: $red;
+  }
+}
+
+.ant-menu-submenu-title .ant-menu-submenu-arrow{
+  right: 8% !important;
+  width: 20px !important;
+  border-color: $red !important;
+
+  &:hover{
+    background-color: $red !important;
+  }
+}
+
+.ant-menu-submenu-title .ant-menu-submenu-arrow::after{
+  color: $red !important;
+}
+
+
+@media only screen and (max-width: 800px){
+  .sub_menu{
+    width: 27%;
+    
+  }
+  .font_sub_title{
+    font-size: 2vw !important;
+  }
+  .font_sub_text{
+    font-size: 1.8vw !important;
+  }
+  .bg-gray{
+    height: 5vw !important;
+    line-height: 5vw !important;
+  }
+  .ant-menu-submenu-title .ant-menu-submenu-arrow {
+    right: 0% !important;
+  }
+}
+
+@media only screen and (max-width: 450px){
+  .ant-menu-submenu-title .ant-menu-submenu-arrow{
+    right: -10% !important;
+  }
+}

@@ -1,0 +1,26 @@
+@import "../../style/variables";
+.contact_media {
+  width: 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2vw;
+  transition: 0.3s;
+  border-radius: 0.3vw;
+  &:hover {
+    color: $white;
+    background-color: $red;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+}
+
+.pointer:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+  .width-25 {
+    width: 50% !important;
+  }
+}

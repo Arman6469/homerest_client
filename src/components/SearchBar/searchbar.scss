@@ -1,0 +1,18 @@
+.search_input {
+  width: 15vw !important;
+  padding: 0 !important;
+  .search_text {
+    padding: 0 !important;
+    padding: 0.8vw !important;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .search_input {
+    width: 30vw !important;
+    margin-top: 2vw !important;
+  }
+  .search_text {
+    font-size: 2.5vw !important;
+  }
+}

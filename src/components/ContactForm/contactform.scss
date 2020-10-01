@@ -1,0 +1,105 @@
+@import "../../style/variables";
+.signup_main_section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.signup_form {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+}
+
+
+.signup_main_part {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.form_input {
+  margin-bottom: 1vw !important;
+  width: 70% !important;
+  display: flex;
+  flex-direction: column;
+}
+.submit_button {
+  
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  border-radius: 1vw;
+  color: $red;
+  border: 0.1vw solid $red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  &:hover {
+    border: 0.1vw solid $white;
+    color: $white;
+    background-color: $red;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+}
+
+.login_link {
+  color: rgb(29, 238, 10);
+  transition: 0.4s;
+  font-size: 1.1vw;
+  font-weight: 600;
+}
+.login_link:hover {
+  color: black;
+  transition: 0.4s;
+}
+
+.contact_inputs{
+  padding: 0.7vw !important;
+}
+
+
+.contact_textarea{
+    border-radius: 0.5vw;
+    border-color: whitesmoke;
+    padding: 0.5vw;
+    outline: none;
+}
+.contact_textarea::placeholder{
+    opacity: 0.6;
+}
+
+
+@media only screen and (max-width: 800px){
+  .form_input{
+    width: 100% !important;
+  }
+  .contact_inputs{
+    font-size: 3vw !important;
+  }
+  .contact_textarea{
+    font-size: 3vw !important;
+  }
+  .submit_button{
+    padding-top: 1vw !important;
+    padding-bottom:1vw !important;
+    padding-left: 4vw !important;
+    padding-right: 4vw !important;
+    font-size: 2.5vw !important;
+  }
+}
+
+
+.swal-text{
+  text-align: center !important;
+}

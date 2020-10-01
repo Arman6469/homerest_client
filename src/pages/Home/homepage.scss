@@ -1,0 +1,100 @@
+@import "../../style/variables";
+.homepage {
+  width: 100vw;
+  box-sizing: border-box;
+  background-color: #eee;
+
+  .homepage_carousel {
+    width: 100%;
+  }
+  .our_story {
+    width: 100%;
+    height: 30vw;
+    margin-top: 2.5vw;
+    background-image: url(../../assets/5.jpg);
+    // background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .home_our_story_link {
+      
+      border: 0.2vw solid black;
+      display: flex;
+      padding: 0.7vw;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.2vw;
+      font-size: 1.4vw;
+      transition: 0.4s;
+      &:hover {
+        border: 0.2vw solid $whitesmoke;
+        color: $whitesmoke !important;
+        transition: 0.4s;
+      }
+    }
+  }
+  .discounted_products {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 2vw;
+  }
+  .our_collections {
+    width: 100%;
+    padding-top: 2vw;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    height: 30vw;
+    #collection_2 {
+      background-image: url(../../assets/2.jpg);
+    }
+    #collection_3 {
+      background-image: url(../../assets/3.jpg);
+    }
+    #collection_4 {
+      background-image: url(../../assets/1.jpg);
+    }
+    .our_collection {
+      width: 25%;
+      background-image: url(../../assets/4.jpg);
+      background-size: cover;
+      transition: 0.5s ease-in-out;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+      &:hover {
+        width: 40%;
+        transition: 0.5s ease-in-out;
+      }
+    }
+  }
+}
+
+.see_all_products {
+  padding: 0.6vw;
+  color: $white;
+  border: 0.1vw solid $white;
+  background-color: $red;
+  border-radius: 1vw;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: $white;
+    transition: 0.4s;
+    color: $red;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  // .discounted_products {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
+}

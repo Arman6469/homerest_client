@@ -1,0 +1,52 @@
+.multi-slider {
+  width: 80%;
+  margin-top: 5vw;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+}
+.multi-slide {
+  min-width: 17%;
+  height: 100%;
+  transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.multi-slide:hover {
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+%btn-styles {
+  height: 5vw;
+  width: 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  font-size: 3vw;
+  color: black;
+  
+}
+
+.multi-slide-button-left {
+  @extend %btn-styles;
+}
+.multi-slide-button-right {
+  @extend %btn-styles;
+}
+
+
+@media only screen and (max-width: 800px){
+  .multi-slider{
+    width: 100% !important;
+  }
+
+}

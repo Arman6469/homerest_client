@@ -1,0 +1,44 @@
+@import "../../style/variables";
+.footer {
+  width: 100%;
+  padding-top: 2vw;
+  overflow: hidden;
+  margin-top: 2vw;
+  background-color: $red;
+  .footer_icons {
+    display: flex;
+    width: 25%;
+    justify-content: center;
+    
+    .footer_icon{
+      width: 2.5vw;
+      height: 2.5vw;
+      margin: 1vw;
+      box-sizing: border-box;
+      color: $whitesmoke;
+      border-radius: 0.5vw;
+      &:hover{
+        background-color: $whitesmoke;
+        color: $red;
+        transition: 0.4s;
+        cursor: pointer;
+      }
+    }
+  }
+  
+  
+}
+
+
+.footer_link_hover{
+  transition: 0.3s;
+  opacity: 0.8;
+  &:hover{
+    opacity: 1;
+    transition: 0.3s;
+  }
+}
+
+.pointer:hover{
+  cursor: pointer;
+}
