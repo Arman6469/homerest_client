@@ -1,9 +1,11 @@
+import globalAPI from "./globalAPI";
+
 export default async () => {
   try {
-    const data = await fetch("/products");
-    const fetchedData = await data.json();
-    const headerData = await fetch("/shopitems");
-    const headerFetched = await headerData.json();
+    const data = await globalAPI.get("/products");
+    const fetchedData = data.data;
+    const headerData = await globalAPI.get("/shopitems");
+    const headerFetched = headerData.data;
     return { fetchedData, headerFetched };
   } catch (error) {
     console.log(error);

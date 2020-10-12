@@ -7,7 +7,8 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
-import Loading from '../../../components/Loading/Loading'
+import Loading from "../../../components/Loading/Loading";
+import globalAPI from "../../../api/globalAPI";
 
 export default function ProductSinglePage({ cartItemsID, setCartItemsID }) {
   const { setItem } = useLocalStorage();
@@ -17,7 +18,7 @@ export default function ProductSinglePage({ cartItemsID, setCartItemsID }) {
   const [product, setProduct] = useState({});
 
   const productId = useParams().id;
-
+  
 
   useEffect(() => {
     fetchSingle(productId);
@@ -58,10 +59,10 @@ export default function ProductSinglePage({ cartItemsID, setCartItemsID }) {
 
   const fetchSingle = async (id) => {
     try {
-      const data = await fetch(`/products/product/${id}`);
-      const fetchedData = await data.json();
-      setProduct(fetchedData);
-      setLoading(false)
+      const data = await globalAPI.get(`/products/product/${id}`);
+
+      setProduct(data.data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -71,85 +72,85 @@ export default function ProductSinglePage({ cartItemsID, setCartItemsID }) {
     if (loading) return <Loading />;
     return (
       <div className="single_page">
-      <div className="single_page_main_image">
-        <div className="current_slide">
-          <img
-            src={
-              product.images?.length > 0 ? product.images[currentSlide] : null
-            }
-            alt="main"
-            width="100%"
-          />
-          <div className="slider-button-left" onClick={() => swap(-1)}>
-            <FontAwesomeIcon icon={faChevronLeft} />{" "}
+        <div className="single_page_main_image">
+          <div className="current_slide">
+            <img
+              src={
+                product.images?.length > 0 ? product.images[currentSlide] : null
+              }
+              alt="main"
+              width="100%"
+            />
+            <div className="slider-button-left" onClick={() => swap(-1)}>
+              <FontAwesomeIcon icon={faChevronLeft} />{" "}
+            </div>
+            <div className="slider-button-right" onClick={() => swap(1)}>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </div>
           </div>
-          <div className="slider-button-right" onClick={() => swap(1)}>
-            <FontAwesomeIcon icon={faChevronRight} />
+
+          <div className="single_slider_images">
+            {product.images?.length > 0
+              ? product.images.map((image, index) => {
+                  return (
+                    <div
+                      className="single_slider_image"
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                    >
+                      <img src={image} alt={index} width="100%" />
+                    </div>
+                  );
+                })
+              : null}
           </div>
         </div>
 
-        <div className="single_slider_images">
-          {product.images?.length > 0
-            ? product.images.map((image, index) => {
-                return (
-                  <div
-                    className="single_slider_image"
-                    key={index}
-                    onClick={() => setCurrentSlide(index)}
-                  >
-                    <img src={image} alt={index} width="100%" />
-                  </div>
-                );
-              })
-            : null}
-        </div>
-      </div>
+        <div className="single_page_description">
+          <h2 className="font-h1 upper font-whitesmoke mt-2">
+            {product.title}
+          </h2>
+          <h4 className="font-medium font-whitesmoke weight-6 mt-5">Price</h4>
+          <p className="font-medium font-whitesmoke weight-7 padding-left1 max-width80">
+            <span className={product.sale === 0 ? null : "underline"}>
+              {product.price}֏
+            </span>
+            <span className="margin-left-1">
+              {product.newprice !== 0 ? product.newprice + "֏" : null}
+            </span>
+          </p>
 
-      <div className="single_page_description">
-        <h2 className="font-h1 upper font-whitesmoke mt-2">{product.title}</h2>
-        <h4 className="font-medium font-whitesmoke weight-6 mt-5">Price</h4>
-        <p className="font-medium font-whitesmoke weight-7 padding-left1 max-width80">
-          <span className={product.sale === 0 ? null : "underline"}>
-            {product.price}$
-          </span>
-          <span className="margin-left-1">
-            {product.newprice !== 0 ? product.newprice + "$" : null}
-          </span>
-        </p>
+          <h4 className="font-medium font-whitesmoke weight-6 mt-5">
+            Description
+          </h4>
+          <p className="font-desc font-whitesmoke padding-left1 max-width80">
+            {product.description}
+          </p>
 
-        <h4 className="font-medium font-whitesmoke weight-6 mt-5">
-          Description
-        </h4>
-        <p className="font-desc font-whitesmoke padding-left1 max-width80">
-          {product.description}
-        </p>
+          <div className="plus_minus_buttons width-100">
+            <div className="shop_count_button" onClick={decrementCount}>
+              -
+            </div>
+            <div className="shop_count">{count}</div>
+            <div className="shop_count_button" onClick={incrementCount}>
+              +
+            </div>
 
-        <div className="plus_minus_buttons width-100">
-          <div className="shop_count_button" onClick={decrementCount}>
-            -
-          </div>
-          <div className="shop_count">{count}</div>
-          <div className="shop_count_button" onClick={incrementCount}>
-            +
-          </div>
-
-          <div
-            className="ui vertical animated button standart ml-2"
-            tabIndex="0"
-            onClick={() => addToCart(product._id, count)}
-          >
-            <div className="hidden content">Shop</div>
-            <div className="visible content">
-              <i className="shop icon"></i>
+            <div
+              className="ui vertical animated button standart ml-2"
+              tabIndex="0"
+              onClick={() => addToCart(product._id, count)}
+            >
+              <div className="hidden content">Shop</div>
+              <div className="visible content">
+                <i className="shop icon"></i>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    )
-  }
+    );
+  };
 
-  return (
-    renderPage()
-  );
+  return renderPage();
 }

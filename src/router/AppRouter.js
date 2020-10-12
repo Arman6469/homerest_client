@@ -10,17 +10,17 @@ import { bindActionCreators } from "redux";
 import { requestApiData } from "../redux/actions";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import Loading from "../components/Loading/Loading";
+import ReactGa from "react-ga";
 
 const ShopPage = lazy(() => import("../pages/Shop/ShopPage"));
-// const AboutPage = lazy(() => import('../pages/About/AboutPage'))
+const AboutPage = lazy(() => import('../pages/About/AboutPage'))
 const SinglePage = lazy(() =>
   import("../pages/Shop/ProductSinglePage/ProductSinglePage")
 );
-const ContactPage = lazy(() => import("../pages/Contact/ContactPage"))
+const ContactPage = lazy(() => import("../pages/Contact/ContactPage"));
 const CartPage = lazy(() => import("../pages/Cart/CartPage"));
 
-function AppRouter({headerItems, requestApiData, products}) {
-  
+function AppRouter({ headerItems, requestApiData, products }) {
   const { getItem } = useLocalStorage();
   const [current, setCurrent] = useState("");
   const [currentAll, setCurrentAll] = useState("");
@@ -29,8 +29,7 @@ function AppRouter({headerItems, requestApiData, products}) {
 
   useEffect(() => {
     const abortController = new AbortController();
-    console.log("hwllo");
-   requestApiData();
+    requestApiData();
     return function cleanup() {
       abortController.abort();
     };
@@ -40,7 +39,10 @@ function AppRouter({headerItems, requestApiData, products}) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [location]);
 
-  
+  useEffect(() => {
+    ReactGa.initialize("UA-179500165-1");
+    ReactGa.pageview("/");
+  }, []);
 
   return (
     <div>
@@ -68,9 +70,9 @@ function AppRouter({headerItems, requestApiData, products}) {
               setCartItemsID={setCartItemsID}
             />
           </Route>
-          {/* <Route path="/about">
+          <Route path="/about">
             <AboutPage />
-          </Route> */}
+          </Route>
           <Route path="/contact">
             <ContactPage />
           </Route>

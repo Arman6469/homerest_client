@@ -3,8 +3,9 @@ import "./contactform.scss";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Error from "../OrderForm/Error/Error";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 import swal from "sweetalert";
+import globalAPI from "../../api/globalAPI";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -17,23 +18,23 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function ContactForm() {
-  const myRef = useRef();
+  // const myRef = useRef();
 
   const sendEmail = async (values) => {
-    const token = await myRef.current.executeAsync();
+    // const token = await myRef.current.executeAsync();
     try {
-      const data = await fetch("/email/contactmail", {
+      const data = await globalAPI({
         method: "POST",
-        headers: { "Content-Type": " application/json" },
-        body: JSON.stringify({
+        url: "/email/contactmail",
+        data: {
           email: values.email,
           lastname: values.lastname,
           firstname: values.firstname,
           text: values.text,
-          token: token,
-        }),
+          // token: token,
+        },
       });
-      const fetchedData = await data.json();
+      const fetchedData = data.data;
       if (fetchedData.message) {
         swal("Ուռաա՜🤩", fetchedData.message, "success");
       } else if (fetchedData.error) {
@@ -154,11 +155,11 @@ export default function ContactForm() {
                   ></textarea>
                   <Error touched={touched.text} message={errors.text} />
                 </div>
-                <ReCAPTCHA
+                {/* <ReCAPTCHA
                   sitekey={process.env.REACT_APP_PUBLIC_RECAPTCHA_KEY}
                   size="invisible"
                   ref={myRef}
-                />
+                /> */}
                 <button
                   className="submit_button font-small weight-7"
                   type="submit"

@@ -44,7 +44,7 @@ export default function SideBar({
       selectedKeys={[currentAll]}
     >
       <Menu.Item className="font_sub_title bg-gray" key={"all"} onClick={showAll}>
-        All
+       Ամբողջը 
       </Menu.Item>
       {headerItems
         ? headerItems.map((category) => {

@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import Error from "./Error/Error";
 import ReCAPTCHA from "react-google-recaptcha";
 import swal from "sweetalert";
+import globalAPI from "../../api/globalAPI";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -33,12 +34,12 @@ export default function OrderForm({ cartProducts }) {
     const mail = { ...values, products: [...cartProducts], token };
 
     try {
-      const data = await fetch("/email/sendmail", {
+      const data = await globalAPI({
         method: "POST",
-        headers: { "Content-Type": " application/json" },
-        body: JSON.stringify(mail),
+        url: "/email/sendmail",
+        data: mail,
       });
-      const fetchedData = await data.json();
+      const fetchedData = data.data;
       if (fetchedData.message) {
         swal("Ուռաա՜🤩", fetchedData.message, "success").then(function () {
           localStorage.clear();

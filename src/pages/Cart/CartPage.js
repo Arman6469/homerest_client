@@ -69,10 +69,10 @@ function CartPage(props) {
         <table className="ui celled table width-75">
           <thead>
             <tr>
-              <th className="width-25">Product</th>
-              <th className="width-25">Title</th>
-              <th className="width-25">Quantity</th>
-              <th className="width-25">Price</th>
+              <th className="width-25">Ապրանքը</th>
+              <th className="width-25">Անունը</th>
+              <th className="width-25">Քանակը</th>
+              <th className="width-25">Գինը</th>
             </tr>
           </thead>
           {cartProducts.length > 0 ? (
@@ -80,7 +80,7 @@ function CartPage(props) {
               return (
                 <tbody key={item._id}>
                   <tr className="width-100">
-                    <td data-label="Name" >
+                    <td data-label="Name">
                       {" "}
                       <img
                         src={item.images[0]}
@@ -94,7 +94,7 @@ function CartPage(props) {
                     >
                       {item.title}
                     </td>
-                    <td data-label="Count" >
+                    <td data-label="Count">
                       <div className="cart_plus_minus width-100">
                         <div
                           className={
@@ -129,7 +129,9 @@ function CartPage(props) {
                       data-label="totalPrice"
                       className="font-medium font-red"
                     >
-                      <div className="w-100 jscac font-medium-cart">{item.totalPrice}$</div>
+                      <div className="w-100 jscac font-medium-cart">
+                        {item.totalPrice}֏
+                      </div>
                     </td>
                   </tr>
                 </tbody>
@@ -141,7 +143,11 @@ function CartPage(props) {
                 <td>
                   <div className="jsc  width-100">
                     <h1 className="font-small-cart font-red">
-                      There is not products in your cart yet
+                      Ձեր զամբյուղը դեռ դատարկ է, ընտրեք և ավելացրեք ձեր
+                      նախընտրած մոդելները "Խանութ" բաժնից
+                      <span role="img" aria-label="">
+                         😊
+                      </span>
                     </h1>
                   </div>
                 </td>
@@ -151,14 +157,16 @@ function CartPage(props) {
         </table>
 
         <div className="width-25-cart flex-column">
-          <p className="font-small-cart font-red weight-6">
-            Shipping in Armenia is FREE
+          <p className="font-small-cart font-red weight-6 text-center">
+            Առաքումը ամբողջ Հայաստանում ԱՆՎՃԱՐ է
           </p>
           <p className="font-medium-cart font-red weight-8 capitalize mt-3">
-            Total Price
+            Ընդհանուր գումարը
           </p>
-          <p className="font-medium-cart font-red weight-7">{totalPrice}$</p>
-          <p className="font-small-cart font-red weight-6 mt-3">Paymanent cash</p>
+          <p className="font-medium-cart font-red weight-7">{totalPrice}֏</p>
+          <p className="font-small-cart font-red weight-6 mt-3">
+            Վճարումը կանխիկ
+          </p>
         </div>
       </div>
 

@@ -25,9 +25,9 @@ export default function ProductCard(props) {
         </div>
         <p className="product_card_price font-red">
           <span className={props.product.sale === 0 ? null : "underline"}>
-            {props.product.price}$
+            {props.product.price}֏
           </span>{" "}
-          {props.product.newprice !== 0 ? props.product.newprice + "$" : null}
+          {props.product.newprice !== 0 ? props.product.newprice + "֏" : null}
         </p>
 
         <div className="product_card_cart">

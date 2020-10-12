@@ -9,19 +9,19 @@
   }
   .our_story {
     width: 100%;
-    height: 30vw;
+    height: 35vw;
     margin-top: 2.5vw;
-    background-image: url(../../assets/5.jpg);
-    // background-attachment: fixed;
+    background-image: url(../../assets/story.jpg);
+    background-attachment: fixed;
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
     .home_our_story_link {
-      
-      border: 0.2vw solid black;
+      border: 0.2vw solid $whitesmoke;
       display: flex;
+      color: $whitesmoke;
       padding: 0.7vw;
       justify-content: center;
       align-items: center;
@@ -29,8 +29,9 @@
       font-size: 1.4vw;
       transition: 0.4s;
       &:hover {
-        border: 0.2vw solid $whitesmoke;
-        color: $whitesmoke !important;
+        cursor: pointer;
+        border: 0.2vw solid black;
+        color: black !important;
         transition: 0.4s;
       }
     }
@@ -90,11 +91,21 @@
   }
 }
 
+.player_div{
+  width: 60%;
+  height: 30vw;
+}
+
 @media only screen and (max-width: 800px) {
-  // .discounted_products {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   justify-content: center;
-  // }
+ .our_story{
+  background-attachment: scroll !important;
+ }
+ .home_our_story_link{
+  border: 0.2vw solid black !important;
+  color: black !important;
+ }
+ .player_div{
+   width: 90% !important;
+   height: 50vw !important;
+ }
 }
